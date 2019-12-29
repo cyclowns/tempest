@@ -4,6 +4,10 @@ A simple CLI application for Windows/Linux that allows you to create projects ba
 
 ## Installation
 
+### Prerequisites
+
+- git
+
 ### Windows
 
 blah blah
@@ -13,6 +17,8 @@ blah blah
 blah blah
 
 ## Usage
+
+List of licenses supported so far is at `https://developer.github.com/v3/licenses/#list-commonly-used-licenses`
 
 ```bash
 $ tempest new {template_name or github repo} 
