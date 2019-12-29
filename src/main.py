@@ -12,9 +12,26 @@
 #      Prompt name/description of project--these are put into directory name/
 #      README.md respectively
 #      Macros? i.e. putting {NAME} in a file causes it to be replaced with the project name
+# TODO QOL
+#      Better --help (argparse?)
 
-def get_license():
-    pass
+import argparse
+
+parser = argparse.ArgumentParser(description='Creates a source-controlled directory given a template, or allows for creation of templates.')
+commands = parser.add_mutually_exclusive_group(required=True)
+commands.add_argument('-n', '--new', dest='template',
+                    help='Creates a directory from a template')
+commands.add_argument('-t', '--template', dest='directory',
+                    help='Creates a new template given a directory')
 
 if __name__ == "__main__":
+    args = parser.parse_args()
+    print(args)
+
+def handle_creation():
+    """Handles creation of a source-controlled directory given"""
+    pass
+
+def handle_templating():
+    """Handles creating a template given a directory to base the template off of"""
     pass
