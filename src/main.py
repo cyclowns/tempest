@@ -9,25 +9,26 @@
 # TODO Creating template
 #      Make sure cant have '/' in name--would conflict with regex
 # TODO Creation
+#      Make sure a git repo URL is asked for (and set remote origin to it)
 #      Go down checklist--README.md, license, necessary config files (i.e. cargo.toml)
 #      Create git repo
 #      Prompt name/description of project--these are put into directory name/
 #      README.md respectively
 #      Macros? i.e. putting {NAME} in a file causes it to be replaced with the project name
 # TODO QOL
-#      Better --help (argparse?)
 
+import os
 import argparse
 import subprocess
 import requests
-import os
 
-parser = argparse.ArgumentParser(description='Creates a source-controlled directory given a template, or allows for creation of templates.')
-commands = parser.add_mutually_exclusive_group(required=True)
-commands.add_argument('-n', '--new', dest='template',
-                    help='Creates a directory from a template')
-commands.add_argument('-t', '--template', dest='directory',
-                    help='Creates a new template given a directory')
+PARSER = argparse.ArgumentParser(description='Creates a source-controlled directory \
+                                 given a template, or allows for creation of templates.')
+COMMANDS = PARSER.add_mutually_exclusive_group(required=True)
+COMMANDS.add_argument('-n', '--new', dest='template',
+                      help='Creates a directory from a template')
+COMMANDS.add_argument('-t', '--template', dest='directory',
+                      help='Creates a new template given a directory')
 
 def handle_creation(template):
     """Handles creation of a source-controlled directory given a template (either a github repo, default template, or user-created template)"""
@@ -59,11 +60,10 @@ def get_license_text(name):
 
 def handle_templating(directory):
     """Handles creating a template given a directory to base the template off of"""
-    pass
 
 if __name__ == "__main__":
-    args = parser.parse_args()
-    if args.template:
-        handle_creation(args.template)
-    elif args.directory:
-        handle_templating(args.directory)
+    ARGS = PARSER.parse_args()
+    if ARGS.template:
+        handle_creation(ARGS.template)
+    elif ARGS.directory:
+        handle_templating(ARGS.directory)
