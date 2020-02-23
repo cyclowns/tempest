@@ -6,7 +6,7 @@ A simple CLI application for Windows/Linux that allows you to create projects ba
 
 ### Prerequisites
 
-- git
+- `git` installed and in your systems PATH
 
 ### Windows
 
