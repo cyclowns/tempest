@@ -51,7 +51,7 @@ def handle_creation(template):
     # check what format template is in
     repo_url = None
     base_template = None
-    if("/" in template): # git repository format e.g. 'cyclowns/tempest'
+    if "/" in template: # git repository format e.g. 'cyclowns/tempest'
         print(f"\nTreating {template} as git repository.")
 
         git_choice = None
@@ -77,6 +77,7 @@ def handle_creation(template):
             return
         else:
             base_template = os.path.join(templates_folder, template)
+
     # we can now start actually creating the new project
     print(f"\nCreating project named {project_name}...")
     if os.path.isdir(project_name):
@@ -91,6 +92,7 @@ def handle_creation(template):
     elif base_template:
         copytree(base_template, project_name)
     print(f"Created folder {project_name} from template {template}!")
+
     os.chdir(project_name)
     if os.path.isdir(".git"): # delete git history if it exists
         rmtree(".git")
@@ -112,11 +114,6 @@ def handle_creation(template):
     with open("LICENSE", "w") as file:
         file.write(license_text)
     print("\nDone!")
-
-
-
-
-
 
 def get_license_text(name):
     """Returns text of a certain license given its name"""

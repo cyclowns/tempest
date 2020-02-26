@@ -1,1 +1,2 @@
-gitpython
+gitpython>=3.0.8
+pyinstaller>=3.6
